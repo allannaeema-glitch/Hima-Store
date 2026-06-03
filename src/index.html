@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر هيما | هيما ستور</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <base target="_blank">
+</head>
+<body>
+
+    <!-- ========== شريط الإعلانات ========== -->
+   
+    <!-- ========== الهيدر ========== -->
+    <header class="header" id="header">
+        <div class="header-top">
+            <a href="#" class="logo" onclick="showPage('home'); return false;">
+                <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                <div class="logo-text">هيما <span>ستور</span></div>
+            </a>
+
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن منتجاتك المفضلة..." id="searchInput">
+                <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="header-actions">
+                <button class="action-btn" onclick="showPage('search'); return false;" title="بحث">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="action-btn" onclick="showPage('contact'); return false;" title="تواصل معنا">
+                    <i class="fas fa-headset"></i>
+                </button>
+                <button class="action-btn" onclick="showPage('cart'); return false;" title="عربة التسوق">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartBadge">0</span>
+                </button>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <nav class="nav-bar" id="navBar">
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="showPage('home'); return false;">الرئيسية</a></li>
+                <li><a href="#" onclick="filterCategory('men'); return false;">رجالي</a></li>
+                <li><a href="#" onclick="filterCategory('women'); return false;">نسائي</a></li>
+                <li><a href="#" onclick="filterCategory('kids'); return false;">أطفال</a></li>
+                <li><a href="#" onclick="showHomeAndScroll('bestsellers'); return false;">الأكثر مبيعاً</a></li>
+                <li><a href="#" onclick="showHomeAndScroll('brandsSection'); return false;">الماركات</a></li>
+                <li><a href="#" onclick="showPage('contact'); return false;">تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ========== الصفحة الرئيسية ========== -->
+    <div id="homePage">
+
+        <!-- ===== عارض الشرائح ===== -->
+        <section class="hero-section">
+            <div class="hero-slide active">
+                <div class="hero-slide-bg" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80')"></div>
+                <div class="hero-content">
+                    <span class="hero-badge">تشكيلة جديدة 2026</span>
+                    <h1 class="hero-title">أزياء <span>الصيف</span> بأناقة لا تضاهى</h1>
+                    <p class="hero-desc">اكتشف أحدث صيحات الموضة للرجال والنساء والأطفال مع خصومات تصل إلى 50%</p>
+                    <a href="#" class="hero-btn" onclick="scrollToSection('featured'); return false;">
+                        تسوق الآن <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-slide-bg" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920&q=80')"></div>
+                <div class="hero-content">
+                    <span class="hero-badge">خصم حصري</span>
+                    <h1 class="hero-title">عروض <span>نهاية الموسم</span></h1>
+                    <p class="hero-desc">خصومات مذهلة على الملابس النسائية والإكسسوارات الفاخرة</p>
+                    <a href="#" class="hero-btn" onclick="scrollToSection('bestsellers'); return false;">
+                        اكتشف العروض <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-slide-bg" style="background-image: url('adidas_3.jpg'), url('hm_3.png')"></div>
+                <div class="hero-content">
+                    <span class="hero-badge">جديد الأطفال</span>
+                    <h1 class="hero-title">أناقة <span>صغارنا</span> تبدأ من هنا</h1>
+                    <p class="hero-desc">تشكيلة واسعة من الملابس المريحة والأنيقة للأطفال بجميع الأعمار</p>
+                    <a href="#" class="hero-btn" onclick="filterCategory('kids'); return false;">
+                        تسوق للأطفال <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+           
+
+            <div class="hero-thumbs">
+                <div class="hero-thumb active" onclick="goToSlide(0)">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=200&q=80" alt="صيف 2026">
+                </div>
+                <div class="hero-thumb" onclick="goToSlide(1)">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=200&q=80" alt="عروض نهاية الموسم">
+                </div>
+                <div class="hero-thumb" onclick="goToSlide(2)">
+                    <img src="adidas_3.jpg" alt="أطفال">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== مميزات المتجر ===== -->
+        <section class="features-section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <h3 class="feature-title">شحن سريع</h3>
+                    <p class="feature-desc">توصيل خلال 24-48 ساعة لجميع المدن مع تتبع الطلبات لحظة بلحظة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-undo-alt"></i></div>
+                    <h3 class="feature-title">إرجاع سهل</h3>
+                    <p class="feature-desc">إرجاع مجاني خلال 30 يوم مع استرداد كامل المبلغ بدون أسئلة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="feature-title">دفع آمن</h3>
+                    <p class="feature-desc">نظام دفع مشفر وآمن 100% مع حماية المشتري على جميع الطلبات</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3 class="feature-title">دعم 24/7</h3>
+                    <p class="feature-desc">فريق دعم متخصص جاهز لمساعدتك على مدار الساعة طوال أيام الأسبوع</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== المنتجات المميزة ===== -->
+        <section class="section" id="featured">
+            <div class="section-header">
+                <span class="section-label">مختاراتنا</span>
+                <h2 class="section-title">المنتجات المميزة</h2>
+                <p class="section-desc">أفضل التشكيلات المختارة بعناية لتناسب جميع الأذواق</p>
+            </div>
+            <div class="products-grid" id="featuredProducts"></div>
+        </section>
+
+        <!-- ===== الأكثر مبيعاً ===== -->
+        <section class="section" id="bestsellers" style="background: var(--white);">
+            <div class="section-header">
+                <span class="section-label">الأكثر طلباً</span>
+                <h2 class="section-title">المنتجات الأكثر مبيعاً</h2>
+                <p class="section-desc">القطع الأكثر شعبية بين عملائنا هذا الموسم</p>
+            </div>
+            <div class="products-grid" id="bestsellerProducts"></div>
+        </section>
+
+        <!-- ===== الماركات العالمية ===== -->
+        <section class="section" id="brandsSection">
+            <div class="section-header">
+                <span class="section-label">شركاؤنا</span>
+                <h2 class="section-title">الماركات العالمية</h2>
+                <p class="section-desc">نقدم لك أشهر الماركات العالمية بأسعار تنافسية</p>
+            </div>
+            <div class="brands-grid" id="brandsGrid"></div>
+        </section>
+
+        <!-- ===== النشرة البريدية ===== -->
+        <section class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>اشترك في نشرتنا البريدية</h2>
+                <p>احصل على آخر العروض والتخفيضات الحصرية مباشرة إلى بريدك الإلكتروني</p>
+                <form id="newsletterForm" class="newsletter-form" novalidate>
+                    <input type="email" name="newsletterEmail" placeholder="أدخل بريدك الإلكتروني" required>
+                    <button type="submit">اشترك الآن</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== صفحة تفاصيل المنتج ========== -->
+    <div class="product-detail-page" id="productDetailPage">
+        <div class="breadcrumb">
+            <a href="#" onclick="showPage('home'); return false;">الرئيسية</a>
+            <i class="fas fa-chevron-left" style="font-size: 10px;"></i>
+            <a href="#" id="detailCategoryLink">رجالي</a>
+            <i class="fas fa-chevron-left" style="font-size: 10px;"></i>
+            <span id="detailBreadcrumb">تفاصيل المنتج</span>
+        </div>
+        <div class="product-detail-grid">
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img src="" alt="" id="detailMainImage">
+                </div>
+                <div class="gallery-thumbs" id="detailThumbs"></div>
+            </div>
+            <div class="product-detail-info">
+                <span class="product-category" id="detailCategoryLabel">رجالي</span>
+                <h1 id="detailName">اسم المنتج</h1>
+                <div class="detail-rating">
+                    <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+                    <span>(128 تقييم)</span>
+                </div>
+                <div class="detail-price">
+                    <span class="old" id="detailOldPrice">350 ر.س</span>
+                    <span id="detailPrice">249 ر.س</span>
+                </div>
+                <p class="detail-desc" id="detailDesc">
+                    منتج عالي الجودة مصنوع من أفضل الخامات، يتميز بتصميم أنيق يناسب جميع المناسبات. متوفر بمقاسات وألوان متعددة.
+                </p>
+
+                <div class="color-selector">
+                    <span class="size-label">اللون:</span>
+                    <div class="color-options" id="detailColors">
+                        <div class="color-option active" style="background: #1a1a2e;"></div>
+                        <div class="color-option" style="background: #8B4513;"></div>
+                        <div class="color-option" style="background: #2F4F4F;"></div>
+                        <div class="color-option" style="background: #800000;"></div>
+                    </div>
+                </div>
+
+                <div class="size-selector">
+                    <span class="size-label">المقاس:</span>
+                    <div class="size-options" id="detailSizes">
+                        <div class="size-option">S</div>
+                        <div class="size-option active">M</div>
+                        <div class="size-option">L</div>
+                        <div class="size-option">XL</div>
+                        <div class="size-option">XXL</div>
+                    </div>
+                </div>
+
+                <div class="quantity-selector">
+                    <span class="size-label">الكمية:</span>
+                    <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                    <input type="text" class="qty-input" value="1" id="qtyInput" readonly>
+                    <button class="qty-btn" onclick="changeQty(1)">+</button>
+                </div>
+
+                <div class="detail-actions">
+                    <button class="btn-primary" onclick="addToCartFromDetail()">
+                        <i class="fas fa-shopping-bag"></i>
+                        أضف إلى العربة
+                    </button>
+                    <button class="btn-secondary"><i class="far fa-heart"></i></button>
+                    <button class="btn-secondary"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== صفحة عربة التسوق ========== -->
+    <div class="cart-page" id="cartPage">
+        <div class="breadcrumb">
+            <a href="#" onclick="showPage('home'); return false;">الرئيسية</a>
+            <i class="fas fa-chevron-left" style="font-size: 10px;"></i>
+            <span>عربة التسوق</span>
+        </div>
+        <h2 style="font-size: 28px; font-weight: 900; margin-bottom: 30px;">عربة التسوق</h2>
+        <div class="cart-grid">
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-summary" id="cartSummary" style="display: none;">
+                <h3 class="summary-title">ملخص الطلب</h3>
+                <div class="summary-row">
+                    <span>المجموع الفرعي</span>
+                    <span id="subtotal">0 ر.س</span>
+                </div>
+                <div class="summary-row">
+                    <span>الشحن</span>
+                    <span id="shipping">مجاني</span>
+                </div>
+                <div class="summary-row">
+                    <span>الخصم</span>
+                    <span id="discount">0 ر.س</span>
+                </div>
+                <div class="summary-row total">
+                    <span>الإجمالي</span>
+                    <span id="total">0 ر.س</span>
+                </div>
+                <button class="btn-primary checkout-btn" onclick="showToast('جاري إتمام عملية الشراء...')">
+                    <i class="fas fa-credit-card"></i>
+                    إتمام الشراء
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== صفحة البحث ========== -->
+    <div class="search-page" id="searchPage">
+        <div class="search-header">
+            <h2>نتائج البحث</h2>
+            <p style="color: var(--gray);">تم العثور على <strong id="searchCount">0</strong> منتج</p>
+        </div>
+        <div class="search-filters">
+            <button class="filter-chip active" onclick="filterSearch('all', event)">الكل</button>
+            <button class="filter-chip" onclick="filterSearch('men', event)">رجالي</button>
+            <button class="filter-chip" onclick="filterSearch('women', event)">نسائي</button>
+            <button class="filter-chip" onclick="filterSearch('kids', event)">أطفال</button>
+            <button class="filter-chip" onclick="filterSearch('sale', event)">تخفيضات</button>
+        </div>
+        <div class="products-grid" id="searchResults"></div>
+    </div>
+
+    <!-- ========== صفحة تواصل معنا ========== -->
+    <div class="contact-page" id="contactPage">
+        <div class="section-header" style="margin-bottom: 40px;">
+            <span class="section-label">نحن هنا لمساعدتك</span>
+            <h2 class="section-title">تواصل معنا</h2>
+            <p class="section-desc">فريقنا جاهز للإجابة على جميع استفساراتك</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info-card">
+                <h3>معلومات التواصل</h3>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-item-info">
+                        <h4>العنوان</h4>
+                        <p>طريق الملك فهد، الرياض، المملكة العربية السعودية</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="contact-item-info">
+                        <h4>الهاتف</h4>
+                        <p>+966 50 123 4567</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-item-info">
+                        <h4>البريد الإلكتروني</h4>
+                        <p>support@haimastore.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-item-info">
+                        <h4>ساعات العمل</h4>
+                        <p>السبت - الخميس: 9:00 ص - 11:00 م<br>الجمعة: 4:00 م - 11:00 م</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://instagram.com/haimastore" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/haimastore" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://snapchat.com/add/haimastore" class="social-link" target="_blank"><i class="fab fa-snapchat-ghost"></i></a>
+                    <a href="https://tiktok.com/@haimastore" class="social-link" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/966501234567" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>أرسل لنا رسالة</h3>
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" name="fullName" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" name="email" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>الموضوع</label>
+                        <select name="subject" required>
+                            <option value="">اختر الموضوع</option>
+                            <option>استفسار عام</option>
+                            <option>طلب منتج</option>
+                            <option>شكوى</option>
+                            <option>اقتراح</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>الرسالة</label>
+                        <textarea name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        إرسال الرسالة
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== الفوتر ========== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom: 20px;">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">هيما <span>ستور</span></div>
+                </div>
+                <p>متجر هيما وجهتك الأولى للأزياء العصرية بأجود الخامات وأفضل الأسعار. نقدم تجربة تسوق فريدة تجمع بين الأناقة والجودة.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">روابط سريعة</h4>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('home'); return false;">الرئيسية</a></li>
+                    <li><a href="#" onclick="filterCategory('men'); return false;">رجالي</a></li>
+                    <li><a href="#" onclick="filterCategory('women'); return false;">نسائي</a></li>
+                    <li><a href="#" onclick="filterCategory('kids'); return false;">أطفال</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">خدمة العملاء</h4>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('contact'); return false;">تواصل معنا</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">شروط الاستخدام</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">حمل التطبيق</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fab fa-apple" style="margin-left: 8px;"></i> App Store</a></li>
+                    <li><a href="#"><i class="fab fa-google-play" style="margin-left: 8px;"></i> Google Play</a></li>
+                    <li><a href="#"><i class="fab fa-huawei" style="margin-left: 8px;"></i> AppGallery</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 متجر هيما</p>
+        </div>
+    </footer>
+
+    <!-- ========== رسائل التنبيه ========== -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">تمت العملية بنجاح</span>
+    </div>
+
+    <!-- ملف الجافاسكريبت -->
+    <script src="../dist/bundle.js"></script>
+</body>
+</html>

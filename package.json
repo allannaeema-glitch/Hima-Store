@@ -1,0 +1,30 @@
+{
+  "name": "hima",
+  "version": "1.0.0",
+  "description": "Hima template using webpack and bootstrap",
+  "keywords": [
+    "webpack",
+    "bootstrap",
+    "Hima"
+  ],
+  "license": "ISC",
+  "author": "Alan Khalaf",
+  "type": "module",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "sass": "^1.72.0",
+    "sass-loader": "^14.1.1",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
+}
