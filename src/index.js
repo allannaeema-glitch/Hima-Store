@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/style.css';
 
 // ============================================
 // متجر هيما ستور - ملف الجافاسكريبت
